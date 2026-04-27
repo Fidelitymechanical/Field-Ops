@@ -1,25 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Dexie from 'dexie';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { db } from './data/db';
+import { seedDatabase } from './data/seed';
 import App from './App';
+import './index.css';
 
-// Initialize Dexie database
-class MyDatabase extends Dexie {
-    constructor() {
-        super('myDatabase');
-        this.version(1).stores({
-            friends: '++id,name,age'
-        });
-    }
+async function initializeApp() {
+  await db.open();
+  const count = await db.clients.count();
+  if (count === 0) {
+    await seedDatabase(db);
+  }
 }
 
-const db = new MyDatabase();
+initializeApp().catch(console.error);
 
-// Bootstrap the React application
-ReactDOM.render(
-    <Router>
-        <App db={db} />
-    </Router>,
-    document.getElementById('root')
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('Root element not found');
+
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 );
