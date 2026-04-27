@@ -1,0 +1,19 @@
+.section {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: #d2a86b;
+  width: 2rem;
+  flex-shrink: 0;
+  padding-top: 0.25rem;
+}
+
+.section-content {
+  flex: 1;
+}

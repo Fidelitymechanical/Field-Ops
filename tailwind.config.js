@@ -1,36 +1,20 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
         nearBlack: '#1F1F1F',
-        gold: '#FFD700',
-        offWhite: '#FAFAFA',
+        gold: '#D2A86B',
+        offWhite: '#F6F5F3',
+        borderColor: 'rgba(255, 255, 255, 0.1)',
       },
       fontFamily: {
         serif: ['IM Fell English', 'serif'],
         sans: ['DM Sans', 'sans-serif'],
         mono: ['DM Mono', 'monospace'],
       },
-      typography: ({ theme }) => ({
-        DEFAULT: {
-          css: {
-            color: theme('colors.offWhite'),
-            a: {
-              color: theme('colors.gold'),
-              '&:hover': {
-                color: theme('colors.offWhite'),
-              },
-            },
-            h1: {
-              color: theme('colors.gold'),
-            },
-            // Add any additional styling here
-          },
-        },
-      }),
     },
   },
-  variants: {},
   plugins: [],
 };
