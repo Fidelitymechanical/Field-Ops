@@ -1,7 +1,12 @@
 import React from 'react';
 import './Section.css';
 
-const Section = ({ number, children }) => {
+interface SectionProps {
+  number: string | number;
+  children: React.ReactNode;
+}
+
+const Section: React.FC<SectionProps> = ({ number, children }) => {
     return (
         <div className='section'>
             <div className='section-number'>{number}</div>

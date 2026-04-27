@@ -5,14 +5,16 @@ interface ButtonProps {
     size?: 'sm' | 'md' | 'lg';
     children: React.ReactNode;
     onClick?: () => void;
+    disabled?: boolean;
+    type?: 'button' | 'submit' | 'reset';
 }
 
-const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'md', children, onClick }) => {
-    const baseStyle = 'font-light focus:outline-none transition duration-150 ease-in-out';
+const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'md', children, onClick, disabled, type = 'button' }) => {
+    const baseStyle = 'font-light focus:outline-none transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed';
     const variantStyles = {
         primary: 'bg-gold text-offWhite hover:bg-opacity-80',
         secondary: 'bg-offWhite text-nearBlack hover:bg-opacity-80',
-        ghost: 'bg-transparent text-offWhite border border-offWhite hover:bg-opacity-20',
+        ghost: 'bg-transparent text-offWhite border border-offWhite hover:bg-white hover:bg-opacity-10',
     }[variant];
 
     const sizeStyles = {
@@ -22,9 +24,11 @@ const Button: React.FC<ButtonProps> = ({ variant = 'primary', size = 'md', child
     }[size];
 
     return (
-        <button 
-            className={`${baseStyle} ${variantStyles} ${sizeStyles}`} 
-            onClick={onClick} 
+        <button
+            type={type}
+            className={`${baseStyle} ${variantStyles} ${sizeStyles}`}
+            onClick={onClick}
+            disabled={disabled}
         >
             {children}
         </button>
