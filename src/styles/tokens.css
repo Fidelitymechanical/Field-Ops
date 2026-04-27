@@ -1,0 +1,9 @@
+:root {
+  --background-color: #1f1f1f; /* Dark theme: near-black background */
+  --primary-text-color: #f6f5f3; /* Warm off-white primary text */
+  --accent-color: #d2a86b; /* Gold accent color */
+  --border-color: rgba(255, 255, 255, 0.1); /* Thin low-contrast neutral borders */
+  --header-font: 'IM Fell English', serif; /* Header font */
+  --body-font: 'DM Sans', sans-serif; /* Body text font */
+  --label-font: 'DM Mono', monospace; /* Label and numeral font */
+}
